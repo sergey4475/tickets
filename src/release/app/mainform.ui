@@ -20,11 +20,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="avMainMenu" name="avMainMenu"/>
-    </item>
-   </layout>
+   <layout class="QGridLayout" name="gridLayout"/>
   </widget>
   <widget class="QMenuBar" name="mainMenu">
    <property name="enabled">
@@ -99,13 +95,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>avMainMenu</class>
-   <extends>QWidget</extends>
-   <header>../CustomWidgets/avmainmenu.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

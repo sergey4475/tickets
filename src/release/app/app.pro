@@ -20,11 +20,9 @@ LIBS += -lavModules$${LIB_SUFFIX}1
 LIBS += -ltickets$${LIB_SUFFIX}1
 
 SOURCES += main.cpp\
-        mainform.cpp \
-    ../CustomWidgets/avmainmenu.cpp
+        mainform.cpp
 
-HEADERS  += mainform.h \
-    ../CustomWidgets/avmainmenu.h
+HEADERS  += mainform.h
 FORMS    += mainform.ui
 
 INCLUDEPATH += ../../libs/avModules
