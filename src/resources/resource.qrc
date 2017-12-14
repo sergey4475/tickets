@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/main">
+        <file alias="list.png">img/List_100px.png</file>
+        <file alias="menu">img/Menu_100px.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="main.qml">../release/app/qml/main.qml</file>
+        <file alias="MenuBackButton.qml">../release/app/qml/MenuBackButton.qml</file>
+        <file alias="BtnMenuItem.qml">../release/app/qml/BtnMenuItem.qml</file>
+    </qresource>
+</RCC>

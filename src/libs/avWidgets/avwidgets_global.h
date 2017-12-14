@@ -1,0 +1,12 @@
+#ifndef AVWIDGETS_GLOBAL_H
+#define AVWIDGETS_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(AVWIDGETS_LIBRARY)
+#  define AVWIDGETSSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define AVWIDGETSSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // AVWIDGETS_GLOBAL_H
