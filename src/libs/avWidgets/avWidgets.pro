@@ -1,35 +1,37 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-11-22T00:05:07
+# Project created by QtCreator 2017-12-14T23:59:22
 #
 #-------------------------------------------------
 
-QT       += widgets sql
+QT       += widgets
 
 QT       -= gui
 
-include('../../../libs.pri')
-
-TARGET = avWidgets$${LIB_SUFFIX}
+TARGET = avWidgets
 TEMPLATE = lib
 
 DEFINES += AVWIDGETS_LIBRARY
 
-LIBS += -lavCore$${LIB_SUFFIX}1
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which has been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
 
-#DESTDIR = ../../../bin
-#DESTDIR = $${BIN_PATH}/
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    avLoginDialog.cpp
+        avwidgets.cpp
 
-HEADERS +=\
-        avwidgets_global.h \
-    avLoginDialog.h
+HEADERS += \
+        avwidgets.h \
+        avwidgets_global.h 
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
-
-INCLUDEPATH += ../avCore
