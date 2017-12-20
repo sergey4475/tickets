@@ -2,6 +2,9 @@
     <qresource prefix="/main">
         <file alias="list.png">img/List_100px.png</file>
         <file alias="menu">img/Menu_100px.png</file>
+        <file>img/pgIcon.png</file>
+        <file>img/sqlite.png</file>
+        <file alias="calendar.png">img/calendar.png</file>
     </qresource>
     <qresource prefix="/">
         <file alias="main.qml">../release/app/qml/main.qml</file>

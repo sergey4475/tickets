@@ -3,5 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     avCore \
     avModules \
-#    avWidgets \
-    tickets
+    tickets \
+    avWidgets

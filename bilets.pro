@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     src/libs \
-    src/release
+    src/release \
+    src/plugins

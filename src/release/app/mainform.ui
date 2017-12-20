@@ -20,11 +20,26 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout"/>
+   <widget class="avSelectEdit" name="avSelectEdit1">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>12</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="buttonVisible">
+     <bool>true</bool>
+    </property>
+    <property name="typeSelect">
+     <enum>avSelectEdit::Nothing</enum>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="mainMenu">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -73,6 +88,7 @@
     <property name="title">
      <string>Сервис</string>
     </property>
+    <addaction name="settings"/>
    </widget>
    <addaction name="file"/>
    <addaction name="edit"/>
@@ -93,8 +109,21 @@
     <string>Открыть...</string>
    </property>
   </action>
+  <action name="settings">
+   <property name="text">
+    <string>Настройки...</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>avSelectEdit</class>
+   <extends>QWidget</extends>
+   <header>../../libs/avWidgets/avSelectEdit/avselectedit.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

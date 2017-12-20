@@ -32,3 +32,9 @@ VERSION = 1.0.0
 QMAKE_TARGET_COPYRIGHT = (c) OOO Avega-soft
 
 linux-g++: QMAKE_CXXFLAGS += -std=c++11
+
+FORMS +=
+
+HEADERS +=
+
+SOURCES +=

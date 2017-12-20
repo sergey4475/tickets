@@ -18,16 +18,21 @@ DESTDIR = ../../../bin
 LIBS += -lavCore$${LIB_SUFFIX}1
 LIBS += -lavModules$${LIB_SUFFIX}1
 LIBS += -ltickets$${LIB_SUFFIX}1
+LIBS += -lavWidgets$${LIB_SUFFIX}1
 
 SOURCES += main.cpp\
-        mainform.cpp
+        mainform.cpp \
+    frmsettings.cpp
 
-HEADERS  += mainform.h
-FORMS    += mainform.ui
+HEADERS  += mainform.h \
+    frmsettings.h
+FORMS    += mainform.ui \
+    frmsettings.ui
 
 INCLUDEPATH += ../../libs/avModules
 INCLUDEPATH += ../../libs/avCore
 INCLUDEPATH += ../../libs/tickets
+INCLUDEPATH += ../../libs/avWidgets
 
 RESOURCES += \
     ../../resources/resource.qrc
