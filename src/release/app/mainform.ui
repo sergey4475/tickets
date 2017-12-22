@@ -19,24 +19,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="avSelectEdit" name="avSelectEdit1">
-    <property name="geometry">
-     <rect>
-      <x>16</x>
-      <y>12</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="buttonVisible">
-     <bool>true</bool>
-    </property>
-    <property name="typeSelect">
-     <enum>avSelectEdit::Nothing</enum>
-    </property>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="mainMenu">
    <property name="enabled">
     <bool>true</bool>
@@ -67,18 +50,6 @@
    <property name="nativeMenuBar">
     <bool>false</bool>
    </property>
-   <widget class="QMenu" name="file">
-    <property name="tearOffEnabled">
-     <bool>false</bool>
-    </property>
-    <property name="title">
-     <string>Файл</string>
-    </property>
-    <property name="toolTipsVisible">
-     <bool>false</bool>
-    </property>
-    <addaction name="OpenFile"/>
-   </widget>
    <widget class="QMenu" name="edit">
     <property name="title">
      <string>Правка</string>
@@ -90,7 +61,6 @@
     </property>
     <addaction name="settings"/>
    </widget>
-   <addaction name="file"/>
    <addaction name="edit"/>
    <addaction name="menu"/>
   </widget>
@@ -116,14 +86,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>avSelectEdit</class>
-   <extends>QWidget</extends>
-   <header>../../libs/avWidgets/avSelectEdit/avselectedit.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -17,6 +17,7 @@ class AVWIDGETSSHARED_EXPORT avSelectEdit:public QWidget
     Q_OBJECT
     Q_PROPERTY(bool buttonVisible READ buttonVisible WRITE setButtonVisible)
     Q_PROPERTY(Type_Select typeSelect READ typeSelect WRITE setTypeSelect)
+    Q_PROPERTY(bool anyFolder READ anyFolder WRITE setAnyFolder)
     // Параметры вводимого числа
     Q_PROPERTY(int length READ length WRITE setLength)
     Q_PROPERTY(int digit READ digit WRITE setDigit)
@@ -27,6 +28,7 @@ public:
     enum Type_Select{
         Values,
         Calendare,
+        OpenFileDialog,
         Nothing
     };
 
@@ -34,6 +36,9 @@ public:
 
     bool buttonVisible(){return p_visible;}
     void setButtonVisible(bool visible);
+
+    bool anyFolder(){return p_anyFolder;}
+    void setAnyFolder(bool anyFolder);
 
     Type_Select typeSelect(){return p_typeSelect;}
     void setTypeSelect(Type_Select typeSelect);
@@ -54,6 +59,7 @@ private:
     QLineEdit *p_qleEdit;
     QToolButton *p_button;
     bool p_visible;
+    bool p_anyFolder;
 
     Type_Select p_typeSelect;
 
@@ -63,10 +69,13 @@ private:
 
     void setConnects();
     void slotCalendar();
+    void slotOpenFileDialog();
     void updateControl();
     // Получение параметров вводимого числа (длина, точность)
 
     virtual bool eventFilter(QObject *obj, QEvent *event);
+
+    Type_Select m_typeSelect;
 
 private slots:
     void slotTextChanged(const QString& text);

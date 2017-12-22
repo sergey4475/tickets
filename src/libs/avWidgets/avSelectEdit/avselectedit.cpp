@@ -1,6 +1,7 @@
 #include "avselectedit.h"
 #include <QCalendarWidget>
 #include <QDoubleValidator>
+#include <QFileDialog>
 
 avSelectEdit::avSelectEdit(QWidget *parent) : QWidget(parent)
 {
@@ -12,7 +13,7 @@ avSelectEdit::avSelectEdit(QWidget *parent) : QWidget(parent)
 
     p_button=new QToolButton(this);
     p_button->setCursor(Qt::ArrowCursor);
-    p_button->setGeometry(0,0,15,15);
+    p_button->setGeometry(0,0,20,20);
 
     QHBoxLayout* qhblLayout=new QHBoxLayout(this);
 
@@ -37,6 +38,15 @@ void avSelectEdit::setButtonVisible(bool visible)
     p_visible = visible;
     p_button->setVisible(visible);
 
+}
+
+/**
+ * @brief avSelectEdit::setAnyFolder
+ * @param anyFolder
+ */
+void avSelectEdit::setAnyFolder(bool anyFolder)
+{
+    p_anyFolder = anyFolder;
 }
 
 /**
@@ -96,6 +106,7 @@ void avSelectEdit::setConnects(){
 
 void avSelectEdit::updateControl(){
     setButtonVisible(false);
+    p_qleEdit->setReadOnly(false);
     p_qleEdit->setAlignment(Qt::AlignLeft);
     if (p_typeSelect == Calendare){
         // Если параметр ввода даты
@@ -109,6 +120,9 @@ void avSelectEdit::updateControl(){
         p_qleEdit->removeEventFilter(this);
         p_button->setText("...");
         p_button->setIcon(QIcon::fromTheme("edit-clear"));
+        setButtonVisible(true);
+    }else if (p_typeSelect == OpenFileDialog){
+        p_qleEdit->setReadOnly(true);
         setButtonVisible(true);
     }else{
         // Если параметр ввода числа
@@ -157,10 +171,20 @@ void avSelectEdit::slotCalendar(){
     qcwCalendar->show();
 }
 
+void avSelectEdit::slotOpenFileDialog(){
+    if (anyFolder())
+        p_qleEdit->setText(QFileDialog::getExistingDirectory());
+    else
+        p_qleEdit->setText(QFileDialog::getOpenFileName());
+}
+
 void avSelectEdit::slotButtonClick()
 {
     if (p_typeSelect == Calendare){
         slotCalendar();
+    }
+    else if (p_typeSelect == OpenFileDialog){
+        slotOpenFileDialog();
     }else
         emit buttonClicked();
 
