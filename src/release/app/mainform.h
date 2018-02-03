@@ -21,12 +21,16 @@ public:
 
 private slots:
 
+
+    void on_settings_triggered();
+
 private:
     Ui::MainForm *ui;
 
     AvSQL *p_sql;
 
     void buildMenu();
+
 };
 
 #endif // MAINFORM_H

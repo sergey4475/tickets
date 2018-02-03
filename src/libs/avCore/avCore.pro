@@ -8,6 +8,7 @@ QT       += core xml
 QT       -= gui
 
 include('../../../libs.pri')
+include('avsettings/avSettings.pri')
 
 TARGET = avCore$${LIB_SUFFIX}
 TEMPLATE = lib

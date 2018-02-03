@@ -1,7 +1,7 @@
 #include "avsql.h"
 
 //------------------------------------------------------------------------------
-AvSQL::AvSQL(QString &prefix)
+AvSQL::AvSQL(QString prefix)
 {
     p_dbDrivers = drivers();
     p_sqlGenerator = 0;
@@ -13,7 +13,7 @@ AvSQL::AvSQL(QString &prefix)
 * @brief AvSQL::set_dbName - Установка параметра DatabaseName
 * @param name - Имя базы данных
 */
-void AvSQL::set_dbName(QString &name, bool include_prefix){
+void AvSQL::set_dbName(QString name, bool include_prefix){
     if (!p_prefix.isEmpty() && include_prefix)
         p_dbName = p_prefix+"_"+name;
     else
@@ -56,6 +56,13 @@ void AvSQL::set_dbPort(int port){
  * @param Driver
  */
 void AvSQL::set_dbDriver(QString Driver){
+
+    if (Driver == "Postgresql")
+        Driver = "QPSQL";
+
+    if (Driver == "SQLite")
+        Driver = "QSQLITE";
+
     p_dbDriver = Driver;
 }
 
@@ -63,7 +70,7 @@ void AvSQL::set_dbDriver(QString Driver){
  * @brief AvSQL::set_Prefix
  * @param prefix
  */
-void AvSQL::set_Prefix(QString &prefix){
+void AvSQL::set_Prefix(QString prefix){
     p_prefix = prefix;
 }
 

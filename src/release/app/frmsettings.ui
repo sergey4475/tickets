@@ -6,12 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>391</width>
-    <height>377</height>
+    <width>395</width>
+    <height>326</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>395</width>
+    <height>326</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Параметры</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <property name="leftMargin">
@@ -29,6 +35,37 @@
    <property name="spacing">
     <number>2</number>
    </property>
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="btnSave">
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="btCancel">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="0" column="0">
     <widget class="QTabWidget" name="settings">
      <property name="currentIndex">
@@ -43,8 +80,8 @@
         <rect>
          <x>4</x>
          <y>4</y>
-         <width>237</width>
-         <height>149</height>
+         <width>381</width>
+         <height>245</height>
         </rect>
        </property>
        <property name="title">
@@ -53,22 +90,55 @@
        <widget class="QWidget" name="formLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>4</x>
-          <y>16</y>
-          <width>225</width>
-          <height>125</height>
+          <x>8</x>
+          <y>24</y>
+          <width>369</width>
+          <height>216</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <property name="rowWrapPolicy">
+          <enum>QFormLayout::DontWrapRows</enum>
+         </property>
+         <property name="labelAlignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="formAlignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="horizontalSpacing">
+          <number>24</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>7</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
          <item row="0" column="0">
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="ldb_driver">
            <property name="text">
             <string>Драйвер СУБД:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="cb_sqlDriver">
+          <widget class="QComboBox" name="db_sqlDriver">
            <property name="currentIndex">
             <number>0</number>
            </property>
@@ -102,11 +172,126 @@
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="ldb_server">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Путь к серверу:</string>
            </property>
           </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="avSelectEdit" name="db_server">
+           <property name="buttonVisible">
+            <bool>false</bool>
+           </property>
+           <property name="typeSelect">
+            <enum>avSelectEdit::String</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="date" stdset="0">
+            <date>
+             <year>0</year>
+             <month>0</month>
+             <day>0</day>
+            </date>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="ldb_port">
+           <property name="text">
+            <string>Порт сервера:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="avSelectEdit" name="db_port">
+           <property name="typeSelect">
+            <enum>avSelectEdit::String</enum>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Normal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="lUserName">
+           <property name="text">
+            <string>Имя пользователя:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="avSelectEdit" name="db_username">
+           <property name="anyFolder">
+            <bool>false</bool>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Normal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="ldb_password">
+           <property name="text">
+            <string>Пароль:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="avSelectEdit" name="db_password">
+           <property name="anyFolder">
+            <bool>false</bool>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="avSelectEdit" name="db_name">
+           <property name="typeSelect">
+            <enum>avSelectEdit::String</enum>
+           </property>
+           <property name="anyFolder">
+            <bool>false</bool>
+           </property>
+           <property name="filterMask">
+            <string>*.*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="ldb_name">
+           <property name="text">
+            <string>Имя базы данных:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="ldb_prefix">
+           <property name="text">
+            <string>Префикс таблиц:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="avSelectEdit" name="db_prefix"/>
          </item>
         </layout>
        </widget>
@@ -114,41 +299,16 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="0">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="btCancel">
-       <property name="text">
-        <string>Отмена</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="btnSave">
-       <property name="text">
-        <string>Сохранить</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>avSelectEdit</class>
+   <extends>QWidget</extends>
+   <header>../../libs/avWidgets/avSelectEdit/avselectedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
-  <include location="../../resources/resource.qrc"/>
   <include location="../../resources/resource.qrc"/>
  </resources>
  <connections/>

@@ -1,8 +1,8 @@
 #include "mainform.h"
 #include "ui_mainform.h"
+#include "frmsettings.h"
 #include <QDebug>
 #include <QStandardItemModel>
-#include "frmsettings.h"
 
 
 MainForm::MainForm(AvSQL *sql, QWidget *parent) :
@@ -14,9 +14,6 @@ MainForm::MainForm(AvSQL *sql, QWidget *parent) :
     setAvSQL(sql);
     //Построение интерфейса
     buildMenu();
-    //frmSettings* frm = new frmSettings();
-    //ui->mdiArea->addSubWindow(frm);
-    //frm->show();
 }
 
 MainForm::~MainForm()
@@ -31,4 +28,17 @@ void MainForm::setAvSQL(AvSQL *avSQL)
 
 void MainForm::buildMenu(){
 
+
+}
+
+//****** Пункты меню
+
+/**
+ * @brief MainForm::on_settings_triggered - Параметры
+ */
+void MainForm::on_settings_triggered()
+{
+    frmSettings* frm = new frmSettings();
+    ui->mdiArea->addSubWindow(frm);
+    frm->show();
 }

@@ -22,10 +22,17 @@ class AVWIDGETSSHARED_EXPORT avSelectEdit:public QWidget
     Q_PROPERTY(int length READ length WRITE setLength)
     Q_PROPERTY(int digit READ digit WRITE setDigit)
 
+    Q_PROPERTY(QLineEdit::EchoMode echoMode READ echoMode WRITE setEchoMode)
+    Q_PROPERTY(QString filterMask READ filterMask WRITE setFilterMask)
+
+    Q_PROPERTY(QString text READ text WRITE setText)
+    Q_PROPERTY(QDate date READ date WRITE setDateCalendar NOTIFY dateChanged)
+
     Q_ENUMS(Type_Select)
 
 public:
     enum Type_Select{
+        String,
         Values,
         Calendare,
         OpenFileDialog,
@@ -49,6 +56,15 @@ public:
     int digit(){return p_digit;}
     void setDigit(int digit);
 
+    QString filterMask(){return p_filterMask;}
+    void setFilterMask(QString FilterMask);
+
+    QLineEdit::EchoMode echoMode() {return p_echoMode;}
+    void setEchoMode(QLineEdit::EchoMode echoMode);
+
+    QString text(){return p_qleEdit->text();}
+    void setText(QString text);
+
     const QDate date();
     void setDateCalendar(QDate date);
 
@@ -66,6 +82,7 @@ private:
     int p_length;
     int p_digit;
     bool f_dec;
+    QString p_filterMask;
 
     void setConnects();
     void slotCalendar();
@@ -76,6 +93,8 @@ private:
     virtual bool eventFilter(QObject *obj, QEvent *event);
 
     Type_Select m_typeSelect;
+
+    QLineEdit::EchoMode p_echoMode;
 
 private slots:
     void slotTextChanged(const QString& text);

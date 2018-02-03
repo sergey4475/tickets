@@ -35,7 +35,7 @@ QVector<User> avUsers::p_getListUser()
     return lUsers;
 }
 
-int avUsers::p_addUser(User usr){
+void avUsers::p_addUser(User usr){
     QMap<QString, QVariant> lRec;
     QString sqlText;
     QSqlGenerator g = *p_lSql->getSqlGenerator();

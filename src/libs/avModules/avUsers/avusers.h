@@ -28,7 +28,7 @@ Q_SIGNALS:
     void rejected();
 
 private:
-    int p_addUser(User usr);
+    void p_addUser(User usr);
     bool p_delUser();
     bool p_setPassword();
     QVector<User> p_getListUser();

@@ -36,16 +36,16 @@ class AVMODULESSHARED_EXPORT AvSQL
 {
 
 public:
-    AvSQL(QString &prefix);
+    AvSQL(QString prefix);
     bool open();
     void close();
-    void set_dbName(QString &name,bool include_prefix = false);
+    void set_dbName(QString name,bool include_prefix = false);
     void set_dbPassword(QString Password);
     void set_dbUserName(QString UserName);
     void set_dbHost(QString Host);
     void set_dbPort(int port);
     void set_dbDriver(QString Driver);
-    void set_Prefix(QString &prefix);
+    void set_Prefix(QString prefix);
     QString TableName(QString tableName);
 
     QStringList drivers();

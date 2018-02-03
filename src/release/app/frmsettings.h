@@ -15,8 +15,22 @@ public:
     explicit frmSettings(QWidget *parent = 0);
     ~frmSettings();
 
+
+private slots:
+    void on_db_sqlDriver_currentIndexChanged(const QString &arg1);
+
+    void on_btnSave_clicked();
+
+    void on_btCancel_clicked();
+
 private:
     Ui::frmSettings *ui;
+    void updateForm();
+
+signals:
+    void saveAndApply();
+
 };
+
 
 #endif // FRMSETTINGS_H

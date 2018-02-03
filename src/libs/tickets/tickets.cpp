@@ -51,4 +51,6 @@ bool Tickets::initialize(){
         }
     }
 
+    return true;
+
  }

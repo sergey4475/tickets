@@ -69,6 +69,41 @@ void avSelectEdit::setDigit(int digit)
 }
 
 /**
+ * @brief avSelectEdit::setFilterMask
+ * @param FilterMask
+ */
+void avSelectEdit::setFilterMask(QString FilterMask)
+{
+    p_filterMask = FilterMask;
+}
+
+/**
+ * @brief avSelectEdit::setEchoMode
+ * @param echoMode
+ */
+void avSelectEdit::setEchoMode(QLineEdit::EchoMode echoMode)
+{
+    p_echoMode = echoMode;
+    updateControl();
+}
+
+void avSelectEdit::setText(QString text)
+{
+    p_qleEdit->setText(text);
+}
+
+/**
+ * @brief avSelectEdit::setLength
+ * @param length
+ */
+void avSelectEdit::setLength(int length)
+{
+    p_length = length;
+}
+
+/*******************************************************/
+
+/**
  * @brief avSelectEdit::date - Возвращает дату
  * @return
  */
@@ -87,20 +122,11 @@ void avSelectEdit::setDateCalendar(QDate date)
         p_qleEdit->setText(date.toString("dd.MM.yyyy"));
 }
 
-/**
- * @brief avSelectEdit::setLength
- * @param length
- */
-void avSelectEdit::setLength(int length)
-{
-    p_length = length;
-}
-
 //********************************************************
 
 void avSelectEdit::setConnects(){
-    connect(p_qleEdit,SIGNAL(editingFinished()),this,SLOT(slotCheckValidate()));
-    connect(p_qleEdit,SIGNAL(textChanged(const QString&)),this,SLOT(slotTextChanged(const QString&)));
+//    connect(p_qleEdit,SIGNAL(editingFinished()),this,SLOT(slotCheckValidate()));
+//    connect(p_qleEdit,SIGNAL(textChanged(const QString&)),this,SLOT(slotTextChanged(const QString&)));
     connect(p_button,SIGNAL(clicked()),this,SLOT(slotButtonClick()));
 }
 
@@ -108,12 +134,14 @@ void avSelectEdit::updateControl(){
     setButtonVisible(false);
     p_qleEdit->setReadOnly(false);
     p_qleEdit->setAlignment(Qt::AlignLeft);
+
     if (p_typeSelect == Calendare){
         // Если параметр ввода даты
         p_qleEdit->removeEventFilter(this);
         p_button->setIcon(QIcon(":calendar.png"));
         p_qleEdit->setInputMask("00.00.0000");
         setButtonVisible(true);
+
     }else if (p_typeSelect == Nothing){
 
         p_qleEdit->setInputMask("");
@@ -121,16 +149,20 @@ void avSelectEdit::updateControl(){
         p_button->setText("...");
         p_button->setIcon(QIcon::fromTheme("edit-clear"));
         setButtonVisible(true);
+
     }else if (p_typeSelect == OpenFileDialog){
         p_qleEdit->setReadOnly(true);
+        p_button->setText("...");
         setButtonVisible(true);
+
+    }else if (p_typeSelect == String){// Параметры ввода строки
+        p_qleEdit->setEchoMode(echoMode());
     }else{
         // Если параметр ввода числа
         p_qleEdit->setAlignment(Qt::AlignRight);
         p_qleEdit->setInputMask("");
         p_qleEdit->installEventFilter(this);
         p_qleEdit->setValidator(new QDoubleValidator(0,0,p_digit,this));
-        p_button->setIcon(QIcon::fromTheme("edit-clear"));
     }
     //p_button->setStyleSheet("border: solid 1px black;");
 }
@@ -174,8 +206,9 @@ void avSelectEdit::slotCalendar(){
 void avSelectEdit::slotOpenFileDialog(){
     if (anyFolder())
         p_qleEdit->setText(QFileDialog::getExistingDirectory());
-    else
-        p_qleEdit->setText(QFileDialog::getOpenFileName());
+    else{
+        p_qleEdit->setText(QFileDialog::getOpenFileName(0,"Выберите путь к файлу","",filterMask()));
+    }
 }
 
 void avSelectEdit::slotButtonClick()
@@ -225,7 +258,7 @@ void avSelectEdit::keyPressEvent(QKeyEvent *event){
 // Фильтруем только числовые и "."
 // Если длина строки привысила допустимой то печатем дробную часть
 bool avSelectEdit::eventFilter(QObject *obj, QEvent *event){
-    if(event->type() == QEvent::KeyPress){
+    if(event->type() == QEvent::KeyPress && typeSelect() != String){
         QKeyEvent *pKeyEvent = static_cast<QKeyEvent *>(event);
         if ((pKeyEvent->key() >= Qt::Key_0 && pKeyEvent->key() <= Qt::Key_9)||(pKeyEvent->text()==".")){
             if ((p_qleEdit->text().indexOf(".",0,Qt::CaseInsensitive) == -1)&&(p_qleEdit->text().length() >= p_length)) {
