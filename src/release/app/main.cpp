@@ -42,15 +42,14 @@ int main(int argc, char *argv[])
 
         usr = new avUsers(lSql);
         usr->showLoginDlg();
-
-        Tickets ticket(lSql);
-        ticket.initialize();
-
     }
 
     MainForm w(lSql);
     QObject::connect(usr,SIGNAL(accepted()),&w,SLOT(show()));
     QObject::connect(usr,SIGNAL(rejected()),&a,SLOT(closeAllWindows()));
+
+    Tickets ticket(lSql);
+    ticket.initialize();
 
     return a.exec();
 }

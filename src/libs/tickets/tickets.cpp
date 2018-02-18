@@ -22,7 +22,7 @@ void Tickets::setAvSQL(AvSQL *avSQL){
  * @brief Tickets::Init
  * @return
  */
-bool Tickets::initialize(){
+bool Tickets::initialize(QWidget *w){
     QString text;
     QSqlQuery q;
     QSqlGenerator g(q);
@@ -50,6 +50,8 @@ bool Tickets::initialize(){
             qDebug() << q.value(0).toString();
         }
     }
+
+
 
     return true;
 

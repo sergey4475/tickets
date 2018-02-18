@@ -11,7 +11,7 @@ class TICKETSSHARED_EXPORT Tickets : public QObject
 public:
     Tickets(AvSQL *sql);
     void setAvSQL(AvSQL *avSQL);
-    bool initialize();
+    bool initialize(QWidget *w);
 private:
     AvSQL *p_sql;
 };
